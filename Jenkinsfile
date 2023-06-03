@@ -13,11 +13,14 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
+                echo ' Source code published to Sonarqube for SCA....'
                 withSonarQubeEnv('Sonarqube') {
+                    withMaven(maven: 'Maven3.9.2'{
                     sh 'mvn clean package sonar:sonar'
                 }
             }
         }
+    }
         stage('Dockerize') {
             steps {
                 withCredentials([usernamePassword(
