@@ -6,21 +6,15 @@ pipeline {
                 git 'https://github.com/nkwentic/htech-solution.git'
             }
         }
-        stage('Build') {
+        stage('build && SonarQube analysis') {
             steps {
-                sh 'mvn clean package'
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                echo ' Source code published to Sonarqube for SCA....'
-                withSonarQubeEnv('Sonarqube') {
-                    withMaven(maven: 'Maven3.9.2'{
-                    sh 'mvn clean package sonar:sonar'
+                withSonarQubeEnv('sonarqube') 
+                    withMaven(maven:'Maven 3.9.2') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
                 }
             }
         }
-    }
         stage('Dockerize') {
             steps {
                 withCredentials([usernamePassword(
