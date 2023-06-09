@@ -1,30 +1,40 @@
 pipeline {
     agent any
     stages {
-        stage('Download-Source-Code') {
+        stage('Download Source Code') {
             steps {
-                git 'https://github.com/nkwentic/htech-solution.git'
+                 git 'https://github.com/nkwentic/htech-solution.git'
             }
         }
-        stage('build && SonarQube analysis') {
+        stage('Build') {
             steps {
-                withSonarQubeEnv('sonarqube') 
-                    withMaven(maven:'Maven 3.9.2') {
-                        sh 'mvn clean package sonar:sonar'
-                    }
+                sh 'mvn clean package'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv(installationName: 'SonarQube-10.0', credentialsId: 'sonarqube-token') {
+                    sh 'mvn sonar:sonar'
                 }
             }
         }
-        stage('Dockerize') {
+        stage('Publish Artifacts to Nexus') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'Docker-credentials', 
-                    passwordVariable: 'PASSWD', 
-                    usernameVariable: 'USER')]) {
-                sh 'docker build -t cj15/htech-finance-app:latest .'
-                sh 'docker push cj15/htech-finance-app:latest'
-                }
+             nexusArtifactUploader artifacts: [[artifactId: 'htech-finance-app', classifier: '', file: 'target/htech-finance-app-1.1-SNAPSHOT.jar', type: 'jar']], credentialsId: 'b8444f2e-91d4-4111-b11c-e17fca17a02c', groupId: 'com.htech', nexusUrl: '172.31.22.239:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'HtechApp-SNAPSHOT', version: '1.1-SNAPSHOT'   
+                
             }
         }
     }
 }
+
+
+
+
+
+
+
+       
+    
+        
+    
+    
