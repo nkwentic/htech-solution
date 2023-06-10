@@ -24,15 +24,7 @@ pipeline {
                 
             }
         }
-       stage('Build Docker Image') {
-    steps {
-        script {
-            docker.withRegistry('http://3.17.9.184:8081/', 'Nexus-credentials') {
-                def customImage = docker.build("htech-finance-app:${env.BUILD_ID}", "--build-arg NEXUS_URL=${registry}repository/HtechApp-SNAPSHOT/com/htech/htech-finance-app/1.1-SNAPSHOT/maven-metadata.xml/htech-finance-app-1.1-SNAPSHOT.jar .")
-            }
-          }
-       }
-      } 
+     
     }
 }
 
