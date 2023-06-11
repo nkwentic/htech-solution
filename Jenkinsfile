@@ -18,13 +18,18 @@ pipeline {
                 }
             }
         }
-        stage('Publish Artifacts to Nexus') {
-            steps {
-             nexusArtifactUploader artifacts: [[artifactId: 'htech-finance-app', classifier: '', file: 'target/htech-finance-app-1.2-SNAPSHOT.jar', type: 'jar']], credentialsId: 'b8444f2e-91d4-4111-b11c-e17fca17a02c', groupId: 'com.htech', nexusUrl: '172.31.22.239:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'HtechApp-SNAPSHOT', version: '1.2-SNAPSHOT'   
+//         stage('Publish Artifacts to Nexus') {
+//             steps {
+//              nexusArtifactUploader artifacts: [[artifactId: 'htech-finance-app', classifier: '', file: 'target/htech-finance-app-1.2-SNAPSHOT.jar', type: 'jar']], credentialsId: 'b8444f2e-91d4-4111-b11c-e17fca17a02c', groupId: 'com.htech', nexusUrl: '172.31.22.239:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'HtechApp-SNAPSHOT', version: '1.2-SNAPSHOT'   
                 
-            }
-        }
-     
+//             }
+//         }
+        stage( 'Build image')
+        steps {
+        withDockerRegistry(url: 'https://hub.docker.com/repository/docker/nkwentic/htech-finance-app/general') {
+    // some block
+}
+}
     }
 }
 
