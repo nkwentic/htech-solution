@@ -1,11 +1,8 @@
 FROM openjdk:8-jdk-alpine
 
-# Copy the JAR file from Nexus
-ADD  http://172.31.22.239:8081/repository/HtechApp-SNAPSHOT/com/htech/htech-finance-app/1.1-SNAPSHOT/maven-metadata.xml
-
-# Set the working directory
-WORKDIR /app
+# Copy the JAR file from jenkins
+ADD  /root/.jenkins/workspace/htech-pipeline/target/htech-finance-app-1.2-SNAPSHOT.jar
 
 # Run the Java application
-CMD ["java", "-jar", "htech-finance-app-1.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "htech-finance-app-1.2-SNAPSHOT.jar"]
 
