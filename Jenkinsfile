@@ -24,13 +24,13 @@ pipeline {
                 
 //             }
 //         }
-        stage( 'Build image'){
-        steps {
-        withDockerRegistry(toolName: 'Docker', url: 'https://hub.docker.com/repository/docker/nkwentic/htech-finance-app/general') {
-    // some block
-}
-}
- }
+//         stage( 'Build image'){
+//         steps {
+//         withDockerRegistry(toolName: 'Docker', url: 'https://hub.docker.com/repository/docker/nkwentic/htech-finance-app/general') {
+//     // some block
+// }
+// }
+//  }
     }
 }
 
