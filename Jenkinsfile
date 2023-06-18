@@ -22,11 +22,11 @@ pipeline {
                 sh 'mvn verify -DskipUnitTest'
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
         // stage('SonarQube-Analysis') {
         //     steps {
         //         withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'jenkins-token') {
