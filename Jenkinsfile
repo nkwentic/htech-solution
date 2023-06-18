@@ -12,11 +12,11 @@ pipeline {
                 git 'https://github.com/nkwentic/htech-solution.git'
             }
         }
-        // stage('Unit Test') {
-        //     steps {
-        //         sh 'mvn test'
-        //     }
-        // }
+        stage('Unit Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
         // stage('Integration Testing') {
         //     steps {
         //         sh 'mvn verify -DskipUnitTest'
