@@ -46,7 +46,7 @@ pipeline {
                nexusArtifactUploader artifacts: [
                    [artifactId: 'htech-finance-app',
                     classifier: '',
-                    file: 'target/htech-finance-app-1.0.0.jar',
+                    file: 'target/htech-finance-app-1.2-SNAPSHOT.jar',
                     type: 'jar']
                ],
                    credentialsId: 'nexus3',
