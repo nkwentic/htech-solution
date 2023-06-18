@@ -27,13 +27,13 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        // stage('SonarQube-Analysis') {
-        //     steps {
-        //         withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'jenkins-token') {
-        //             sh 'mvn sonar:sonar'
-        //         }
-        //     }
-        // }
+        stage('SonarQube-Analysis') {
+            steps {
+                withSonarQubeEnv(installationName: 'Sonarqube', credentialsId: 'sonarqube-token') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
         // stage("Quality Gate") {
         //     steps {
         //       timeout(time: 1, unit: 'HOURS') {
