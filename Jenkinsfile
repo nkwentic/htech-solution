@@ -17,11 +17,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        // stage('Integration Testing') {
-        //     steps {
-        //         sh 'mvn verify -DskipUnitTest'
-        //     }
-        // }
+        stage('Integration Testing') {
+            steps {
+                sh 'mvn verify -DskipUnitTest'
+            }
+        }
         // stage('Build') {
         //     steps {
         //         sh 'mvn clean package'
