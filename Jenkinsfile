@@ -55,7 +55,7 @@ pipeline {
                    nexusVersion: 'nexus3', 
                    protocol: 'http', 
                    repository: 'http://18.219.164.120:8081/repository/htech-app/',
-                   version: '1.2.0' 
+                   version: '1.2-SNAPSHOT.jar' 
         }
             
         // stage('Docker Image Build') {
