@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    // environment {
-    //     imageName = "finance-app"
-    //     registryCredentials = "Nexus-credentials"
-    //     registry = "ec2-54-173-113-208.compute-1.amazonaws.com:8085"
-    //     dockerImage = ''
-    // }
+    environment {
+        imageName = "finance-app"
+        registryCredentials = "nexus3"
+        registry = "ip-172-31-24-213.us-east-2.compute.internal:8085"
+        dockerImage = ''
+    }
     stages {
         stage('Download Source Code') {
             steps {
@@ -81,13 +81,13 @@ pipeline {
                 }
             }
         }
-        // stage('Docker Image Build') {
-        //     steps {
-        //         script {
-        //                     dockerImage = docker.build imageName
-        //                 }
-        //         }
-        //     }        
+        stage('Docker Image Build') {
+            steps {
+                script {
+                            dockerImage = docker.build imageName
+                        }
+                }
+            }        
         //     // Uploading Docker images into Nexus Registry
         // stage('Uploading-to-Nexus') {
         //     steps{
