@@ -93,7 +93,7 @@ pipeline {
             steps {
                 script {
                    // This step should not normally be used in your script. Consult the inline help for details.
-                        withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'ec2-18-219-164-120.us-east-2.compute.amazonaws.com') {
+                        withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'http://ec2-18-219-164-120.us-east-2.compute.amazonaws.com') {
                         dockerImage.push('latest') 
                 }
              }
