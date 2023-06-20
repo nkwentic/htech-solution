@@ -41,22 +41,22 @@ pipeline {
         //       }
         //     }
         //   }
-        // stage('Upload War file to Nexus') {
-        //     steps {
-        //        nexusArtifactUploader artifacts: [
-        //            [artifactId: 'htech-finance-app',
-        //             classifier: '',
-        //             file: 'target/htech-finance-app-1.2',
-        //             type: 'jar']
-        //        ],
-        //            credentialsId: 'nexus3',
-        //            groupId: 'com.htech',
-        //            nexusUrl: '172.31.24.213', 
-        //            nexusVersion: 'nexus3', 
-        //            protocol: 'http', 
-        //            repository: 'http://18.219.164.120:8081/repository/htech-app/',
-        //            version: '1.2-SNAPSHOT.jar' 
-        // }
+        stage('Upload War file to Nexus') {
+            steps {
+               nexusArtifactUploader artifacts: [
+                   [artifactId: 'htech-finance-app',
+                    classifier: '',
+                    file: 'target/htech-finance-app-1.2.jar',
+                    type: 'jar']
+               ],
+                   credentialsId: 'nexus3',
+                   groupId: 'com.htech',
+                   nexusUrl: '172.31.24.213', 
+                   nexusVersion: 'nexus3', 
+                   protocol: 'http', 
+                   repository: 'http://18.219.164.120:8081/repository/htech-app/',
+                   version: '1.2' 
+        }
             
         // stage('Docker Image Build') {
         //     steps {
