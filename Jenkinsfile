@@ -90,13 +90,19 @@ pipeline {
             }        
             // Uploading Docker images into Nexus Registry
         stage('Uploading-to-Nexus') {
-            steps{
-                script {
-                    docker.withRegistry( 'http://'+registry, registryCredentials ) {
-                    dockerImage.push('latest')
-                    }
-                }
+            steps {
+                // This step should not normally be used in your script. Consult the inline help for details.
+                        withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'http://18.219.164.120:8081/repository/htech-docker-repo/') {
+                        dockerImage.push('latest')
+             }
             }
+            // steps{
+            //     script {
+            //         docker.withRegistry( 'http://'+registry, registryCredentials ) {
+            //         dockerImage.push('latest')
+            //         }
+            //     }
+            // }
         }
 //         stage('Upload Docker Image to Nexus') {
 //           steps {
