@@ -4,7 +4,7 @@ pipeline {
         imageName = "finance-app"
         // registryCredentials = "nexus3"
         // registry = "ip-172-31-24-213.us-east-2.compute.internal:8085"
-        // dockerImage = ''
+        dockerImage = ''
     }
     stages {
         stage('Download Source Code') {
