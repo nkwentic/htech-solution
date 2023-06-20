@@ -77,7 +77,7 @@ pipeline {
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'htech-app', 
-                    version: "${readPomVersion.version}"
+                    version: '1.2'
                 }
             }
         }
