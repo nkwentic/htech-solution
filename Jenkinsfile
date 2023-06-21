@@ -3,7 +3,7 @@ pipeline {
     environment {
         imageName = "finance-app"
         registryCredentials = "nexus-docker-registry-repo"
-        registry = "http://18.219.164.120/:8085/"
+        registry = "http://18.219.164.120:8081/repository/htech-docker-repo/"
         dockerImage = ''
     }
     stages {
