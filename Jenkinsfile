@@ -3,7 +3,7 @@ pipeline {
     environment {
         imageName = "finance-app"
         registryCredentials = "nexus3"
-        registry = "ec2-18-219-164-120.us-east-2.compute.amazonaws.com:8085"
+        registry = "http://18.219.164.120:8081/repository/htech-docker-repo/:8085"
         dockerImage = ''
     }
     stages {
@@ -92,9 +92,9 @@ pipeline {
         stage('Uploading-to-Nexus') {
             steps{
                 script {
-                    docker.withRegistry( 'http://'+registry, registryCredentials ) {
+                    withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'http://18.219.164.120:8081/repository/htech-docker-repo/') {
                     dockerImage.push('latest')
-                    }
+                  }   
                 }
             }
         }
