@@ -92,7 +92,7 @@ pipeline {
         stage('Uploading-to-Nexus') {
             steps{
                 script {
-                    withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'http://18.219.164.120:8081/repository/htech-docker-repo/') {
+                    withDockerRegistry(credentialsId: 'nexus-docker-registry-repo', url: 'http://18.219.164.120:8085/repository/htech-docker-repo/') {
                     dockerImage.push('latest')
                   }   
                 }
