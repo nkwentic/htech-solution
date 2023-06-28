@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    // environment {
-    //     imageName = "finance-app"
-    //     registryCredentials = "nexus-docker-registry-repo"
-    //     registry = "ec2-18-219-164-120.us-east-2.compute.amazonaws.com:8085/"
-    //     dockerImage = ''
+    environment {
+        imageName = "finance-app"
+        registryCredentials = "nexus-docker-registry-repo"
+        registry = "ec2-18-219-164-120.us-east-2.compute.amazonaws.com:8085/"
+        dockerImage = ''
     }
     stages {
         stage('Download Source Code') {
