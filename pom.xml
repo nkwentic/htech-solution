@@ -20,7 +20,11 @@
     </properties>     
 
     <dependencies>
-        <!-- Add dependencies here -->
+        <dependency>
+    		<groupId>org.jenkins-ci.plugins</groupId>
+   		<artifactId>docker-workflow</artifactId>
+    		<version>563.vd5d2e5c4007f</version>
+   	</dependency>  
     </dependencies>
 
     <build>
