@@ -92,7 +92,7 @@ pipeline {
         stage('Uploading-to-Nexus') {
             steps{
                 script {
-                    docker.withRegistry('https://'+registry, registryCredentials) {
+                    docker.withRegistry(registry, registryCredentials) {
                     dockerImage.push('latest')
                   }   
                 }
