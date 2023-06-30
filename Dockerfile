@@ -8,9 +8,9 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y curl
 
 # # Define an environment variable for the artifact URL
-ENV ARTIFACT_URL="http://18.219.164.120:8081/repository/htech-app/com/htech/htech-finance-app/1.2/htech-finance-app-1.2.jar"
+ENV ARTIFACT_URL="http://18.219.164.120:8081/repository/htech-app/com/htech/htech-finance-app/1.4/htech-finance-app-1.4.jar"
 # Add artifact
-# ADD "http://18.219.164.120:8081/repository/htech-app/com/htech/htech-finance-app/1.2/htech-finance-app-1.2.jar"
+# ADD "http://18.219.164.120:8081/repository/htech-app/com/htech/htech-finance-app/1.4/htech-finance-app-1.4.jar"
 
 # Download the artifact using curl
 RUN curl -LO $ARTIFACT_URL
@@ -18,4 +18,4 @@ RUN curl -LO $ARTIFACT_URL
 # Add any other necessary steps, such as running the downloaded artifact
 
 # Set the entry point for the container, if required
-CMD ["java", "-jar", "htech-finance-app-1.2.jar"]
+CMD ["java", "-jar", "htech-finance-app-1.4.jar"]
