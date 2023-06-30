@@ -14,9 +14,9 @@ ENV ARTIFACT_URL="http://18.219.164.120:8081/repository/htech-app/com/htech/htec
 
 # Download the artifact using curl
 RUN curl -LO $ARTIFACT_URL
-
+EXPOSE 8888
 # Add any other necessary steps, such as running the downloaded artifact
 
 # Set the entry point for the container, if required
 CMD ["java", "-jar", "htech-finance-app-1.4.jar"]
-EXPOSE 8888
+
