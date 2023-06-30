@@ -19,3 +19,4 @@ RUN curl -LO $ARTIFACT_URL
 
 # Set the entry point for the container, if required
 CMD ["java", "-jar", "htech-finance-app-1.4.jar"]
+EXPOSE 8080
