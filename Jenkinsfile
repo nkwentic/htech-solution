@@ -58,29 +58,29 @@ pipeline {
         //            version: '1.2' 
         // }
         // }
-        // stage('Upload War file to Nexus') {
-        //     steps {
-        //         script {
-        //             // def readPomVersion = readMavenPom file: 'pom.xml'
-        //             nexusArtifactUploader artifacts: 
-        //             [
-        //                 [
-        //                     artifactId: 'htech-finance-app', 
-        //                     classifier: '', 
-        //                     file: 'target/htech-finance-app-1.4.jar', 
-        //                     type: 'jar'
-        //                 ]
-        //             ], 
-        //             credentialsId: 'nexus3', 
-        //             groupId: 'com.htech', 
-        //             nexusUrl: '18.219.164.120:8081', 
-        //             nexusVersion: 'nexus3', 
-        //             protocol: 'http', 
-        //             repository: 'htech-app', 
-        //             version: '1.4'
-        //         }
-        //     }
-        // }
+        stage('Upload War file to Nexus') {
+            steps {
+                script {
+                    // def readPomVersion = readMavenPom file: 'pom.xml'
+                    nexusArtifactUploader artifacts: 
+                    [
+                        [
+                            artifactId: 'htech-finance-app', 
+                            classifier: '', 
+                            file: 'target/htech-finance-app-1.4.jar', 
+                            type: 'jar'
+                        ]
+                    ], 
+                    credentialsId: 'nexus3', 
+                    groupId: 'com.htech', 
+                    nexusUrl: '18.219.164.120:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'htech-app', 
+                    version: '1.4'
+                }
+            }
+        }
         stage('Docker Image Build') {
             steps {
                 script {
