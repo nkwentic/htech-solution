@@ -89,15 +89,15 @@ pipeline {
                 }
             }        
             // Uploading Docker images into Nexus Registry
-        // stage('Uploading-to-Nexus') {
-        //     steps{
-        //         script {
-        //             docker.withRegistry(registry, registryCredentials) {
-        //             dockerImage.push('latest')
-        //           }   
-        //         }
-        //     }
-        // }
+        stage('Uploading-DockerImage-to-Nexus') {
+            steps{
+                script {
+                    docker.withRegistry(registry, registryCredentials) {
+                    dockerImage.push('latest')
+                  }   
+                }
+            }
+        }
 //         stage('Upload Docker Image to Nexus') {
 //           steps {
 //             script {
