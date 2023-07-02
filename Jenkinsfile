@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         imageName = "htech-finance-app"
-        registryCredentials = "nexus-docker-registry-repo"
+        registryCredentials = "nexus3"
         registry = "http://18.116.26.153/:8082/repository/htech-docker-repo/"
         dockerImage = ''
     }
