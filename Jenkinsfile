@@ -60,21 +60,21 @@ pipeline {
         // }
 stage('Upload Jar file to Nexus') {
     steps {
-        nexusArtifactUploader {
-            nexusVersion('nexus3')
-            protocol('http')
-            nexusUrl('18.116.26.153:8081')
-            groupId('com.htech')
-            version('1.5') 
-            repository('htech-app')
-            credentialsId('nexus3')
-
-            artifact {
-                artifactId('htech-finance-app')
-                type('jar')
-                file('target/htech-finance-app-1.5.jar')
-            }
-        }
+    nexusArtifactUploader(
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: '18.116.26.153:8081',
+        groupId: 'com.htech',
+        version: '1.5',
+        repository: 'htech-app',
+        credentialsId: 'nexus3',
+        artifacts: [
+            [artifactId: 'htech-finance-app',
+             classifier: '',
+             file: 'htech-finance-app-' + version + '.jar',
+             type: 'jar']
+        ]
+     )
     }
 }
 
