@@ -75,6 +75,8 @@ pipeline {
              type: 'jar']
         ]
      )
+        }
+        }    
                 // script {
                 //     // def readPomVersion = readMavenPom file: 'pom.xml'
                 //     nexusArtifactUploader artifacts: 
@@ -94,9 +96,6 @@ pipeline {
                 //     repository: 'htech-app', 
                 //     version: '1.5'
                 // }
-            }
-        }
-
         stage('Docker Image Build') {
             steps {
                 script {
