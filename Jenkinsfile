@@ -74,7 +74,7 @@ pipeline {
                     credentialsId: 'nexus3', 
                     groupId: 'com.htech', 
                     nexusUrl: '18.116.26.153:8081', 
-                    nexusVersion: 'nexus3', 
+                    nexusVersion: 'nexus-3.56.0', 
                     protocol: 'http', 
                     repository: 'htech-app', 
                     version: '1.4'
