@@ -36,7 +36,8 @@ pipeline {
         }
         
         stage('Upload War file to Nexus') {
-            steps {    
+            steps { 
+                sh "ls -la"
         sh "curl -v -u admin:admin123 --upload-file htech-finance-app-1.5.jar target/htech-finance-app-1.5.jar/com.htech/htech-finance-app/1.5/htech-finance-app-1.5.jar"
             }
         }
