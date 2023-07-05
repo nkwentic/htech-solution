@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        ansiColor('xterm')
+    }
     environment {
         imageName = "htech-finance-app"
         registryCredentials = "nexus3"
