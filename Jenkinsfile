@@ -79,23 +79,38 @@ pipeline {
      //    }    
                 script {
                     // def readPomVersion = readMavenPom file: 'pom.xml'
-                    nexusArtifactUploader artifacts: 
-                    [
-                        [
-                            artifactId: 'htech-finance-app', 
-                            classifier: '', 
-                            file: 'target/htech-finance-app-1.5.jar', 
-                            type: 'jar'
-                        ]
-                    ], 
-                    credentialsId: 'nexus3', 
-                    groupId: 'com.htech', 
-                    nexusUrl: '18.116.26.153:8081', 
-                    nexusVersion: 'nexus-3.56.0', 
-                    protocol: 'http', 
-                    repository: 'htech-app', 
-                    version: '1.5'
-                }
+                //     nexusArtifactUploader artifacts: 
+                //     [
+                //         [
+                //             artifactId: 'htech-finance-app', 
+                //             classifier: '', 
+                //             file: 'target/htech-finance-app-1.5.jar', 
+                //             type: 'jar'
+                //         ]
+                //     ], 
+                //     credentialsId: 'nexus3', 
+                //     groupId: 'com.htech', 
+                //     nexusUrl: '18.116.26.153:8081', 
+                //     nexusVersion: 'nexus-3.56.0', 
+                //     protocol: 'http', 
+                //     repository: 'htech-app', 
+                //     version: '1.5'
+                // }
+                    nexusArtifactUploader(
+        nexusVersion: 'nexus-3.56.0',
+        protocol: 'http',
+        nexusUrl: '18.116.26.153:8081',
+        groupId: 'com.htech',
+        version: 1.5,
+        repository: 'htech-app',
+        credentialsId: 'nexus3',
+        artifacts: [
+            [artifactId: htech-finance-app,
+             classifier: '',
+             file: 'target/htech-finance-app-1.5.jar',
+             type: 'jar']
+        ]
+     )
             }
         }
         stage('Docker Image Build') {
