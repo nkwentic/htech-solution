@@ -34,86 +34,12 @@ pipeline {
                 }
             }
         }
-        // stage("Quality Gate") {
-        //     steps {
-        //       timeout(time: 1, unit: 'HOURS') {
-        //         waitForQualityGate abortPipeline: true
-        //       }
-        //     }
-        //   }
-        // stage('Upload War file to Nexus') {
-        //     steps {
-        //        nexusArtifactUploader artifacts: [
-        //            [artifactId: 'htech-finance-app',
-        //             classifier: '',
-        //             file: 'target/htech-finance-app-1.2.jar',
-        //             type: 'jar']
-        //        ],
-        //            credentialsId: 'nexus3',
-        //            groupId: 'com.htech',
-        //            nexusUrl: '172.31.24.213', 
-        //            nexusVersion: 'nexus3', 
-        //            protocol: 'http', 
-        //            repository: 'htech-app',
-        //            version: '1.2' 
-        // }
-        // }
+        
         stage('Upload War file to Nexus') {
-            steps {
-     //            nexusArtifactUploader(
-     //    nexusVersion: 'nexus3',
-     //    protocol: 'http',
-     //    nexusUrl: '18.116.26.153:8081',
-     //    groupId: 'com.htech',
-     //    version: '1.5',
-     //    repository: 'htech-app',
-     //    credentialsId: 'nexus3',
-     //    artifacts: [
-     //        [artifactId: htech-finance-app,
-     //         classifier: '',
-     //         file: 'target/htech-finance-app-1.5.jar',
-     //         type: 'jar']
-     //    ]
-     // )
-     //    }
-     //    }    
-                // script {
-                    // def readPomVersion = readMavenPom file: 'pom.xml'
-                //     nexusArtifactUploader artifacts: 
-                //     [
-                //         [
-                //             artifactId: 'htech-finance-app', 
-                //             classifier: '', 
-                //             file: 'target/htech-finance-app-1.5.jar', 
-                //             type: 'jar'
-                //         ]
-                //     ], 
-                //     credentialsId: 'nexus3', 
-                //     groupId: 'com.htech', 
-                //     nexusUrl: '18.116.26.153:8081', 
-                //     nexusVersion: 'nexus-3.56.0', 
-                //     protocol: 'http', 
-                //     repository: 'htech-app', 
-                //     version: '1.5'
-                // }
-                    nexusArtifactUploader(
-        nexusVersion: 'nexus-3.56.0',
-        protocol: 'http',
-        nexusUrl: '18.116.26.153:8081',
-        groupId: 'com.htech',
-        version: 1.5,
-        repository: 'htech-app',
-        credentialsId: 'nexus3',
-        artifacts: [
-            [artifactId: htech-finance-app,
-             classifier: '',
-             file: 'target/htech-finance-app-1.5.jar',
-             type: 'jar']
-        ]
-     )
+            steps {    
+        sh "curl -v -u admin:admin123 --upload-file target/htech-finance-app-1.5.jar target/htech-finance-app-1.5.jar/com.htech/htech-finance-app/1.5/htech-finance-app-1.5.jar"
             }
         }
-        // }
         stage('Docker Image Build') {
             steps {
                 script {
