@@ -77,7 +77,7 @@ pipeline {
      // )
      //    }
      //    }    
-                script {
+                // script {
                     // def readPomVersion = readMavenPom file: 'pom.xml'
                 //     nexusArtifactUploader artifacts: 
                 //     [
@@ -113,7 +113,7 @@ pipeline {
      )
             }
         }
-        }
+        // }
         stage('Docker Image Build') {
             steps {
                 script {
