@@ -7,6 +7,7 @@ pipeline {
         imageName = "htech-finance-app"
         registryCredentials = "nexus3"
         registry = "http://18.116.26.153:8081/repository/htech-app/"
+        registry2 = "http://18.116.26.153:8082/repository/nexus-docker-registry-repo/"
         dockerImage = ''
     }
     stages {
@@ -55,8 +56,8 @@ pipeline {
         stage('Uploading-DockerImage-to-Nexus') {
             steps{
                 script {
-                    docker.withRegistry(registry, registryCredentials) {
-                    // dockerImage.push('latest')
+                    docker.withRegistry(registry2, registryCredentials) {
+                    dockerImage.push('latest')
                   }   
                 }
             }
