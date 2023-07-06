@@ -4,7 +4,7 @@ pipeline {
         ansiColor('xterm')
     }
     environment {
-        imageName = "htech-finance-app"
+        imageName = "nexus-docker-registry-repo"
         registryCredentials = "nexus3"
         registry = "http://18.116.26.153:8081/repository/htech-app/"
         registry2 = "http://18.116.26.153:8082/repository/nexus-docker-registry-repo/"
