@@ -57,8 +57,8 @@ pipeline {
             steps{
                 script {
                     docker.withRegistry(registry2, registryCredentials) {
-                        sh 'docker tag nexus-docker-registry-repo 18.116.26.153:8082/nexus-docker-registry-repo/nexus-docker-registry-repo:latest'
-sh 'docker push 18.116.26.153:8082/nexus-docker-registry-repo/nexus-docker-registry-repo:latest'
+                        sh 'docker tag nexus-docker-registry-repo http://18.116.26.153:8082/nexus-docker-registry-repo/nexus-docker-registry-repo:latest'
+sh 'docker push http://18.116.26.153:8082/nexus-docker-registry-repo/nexus-docker-registry-repo:latest'
                     // dockerImage.push('latest')
                   }   
                 }
